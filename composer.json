@@ -1,0 +1,8 @@
+{
+  "name": "accurateweb/client-application-bundle",
+  "autoload": {
+    "psr-4": {
+      "Accurateweb\\ClientApplicationBundle\\": ""
+    }
+  }
+}

@@ -1,0 +1,25 @@
+services:
+  aw.client_application.manager:
+    class: Accurateweb\ClientApplicationBundle\DataAdapter\ClientApplicationModelAdapterManager
+    public: true
+
+  aw.client_application.twig_extension:
+    class: Accurateweb\ClientApplicationBundle\Twig\ClientApplicationExtension
+    arguments: ['@aw.client_application.manager']
+    tags:
+      - { name: twig.extension }
+
+  aw.client_application.transformer:
+    class: Accurateweb\ClientApplicationBundle\DataAdapter\ClientApplicationModelTransformer
+    public: true
+    arguments: ['@aw.client_application.manager', '@debug.stopwatch']
+
+  aw.form.data_adapter:
+    class: Accurateweb\ClientApplicationBundle\DataAdapter\Form\FormErrorAdapter
+    tags:
+      - { name: aw.client_application.adapter }
+
+  aw.violation.data_adapter:
+    class: Accurateweb\ClientApplicationBundle\DataAdapter\Form\ViolationAdapter
+    tags:
+      - { name: aw.client_application.adapter }

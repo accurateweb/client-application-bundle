@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~  (c) 2019 Общество с ограниченной ответственностью "Экьюрейт Веб". Все права защищены.
+  ~
+  ~  Настоящий файл является частью программного продукта, разработанного ООО "Экьюрейт Веб"
+  ~  (ОГРН 1186658025289, ИНН 6683013910).
+  ~
+  ~  Алгоритм и исходные коды программного кода программного продукта являются коммерческой тайной
+  ~  ООО "Экьюрейт Веб". Любое их использование без согласия ООО "Экьюрейт Веб" рассматривается,
+  ~  как нарушение его авторских прав.
+  ~   Ответственность за нарушение авторских прав наступает в соответствии с действующим законодательством РФ.
+  -->
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service
+                id="aw.client_application.manager"
+                class="Accurateweb\ClientApplicationBundle\DataAdapter\ClientApplicationModelAdapterManager"
+                public="true"
+                autowire="false">
+        </service>
+        <service
+                id="aw.client_application.twig_extension"
+                class="Accurateweb\ClientApplicationBundle\Twig\ClientApplicationExtension"
+                public="false"
+                autowire="false">
+            <argument type="service" id="aw.client_application.manager" />
+            <tag name="twig.extension" />
+        </service>
+        <service
+                id="aw.client_application.transformer"
+                class="Accurateweb\ClientApplicationBundle\DataAdapter\ClientApplicationModelTransformer"
+                public="true"
+                autowire="false">
+            <argument  type="service" id="aw.client_application.manager" />
+        </service>
+    </services>
+</container>
