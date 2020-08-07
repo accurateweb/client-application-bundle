@@ -148,4 +148,13 @@ EOF
 
     return $data;
   }
+
+  /**
+   * Совместимость со старыми версиями
+   * @return string
+   */
+  public function getName ()
+  {
+    return 'ClientApplicationExtension';
+  }
 }
